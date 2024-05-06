@@ -6,7 +6,7 @@ const ses = new SESClient({ region: "us-east-2" });
 
 export const handler = async (event) => {
   try {
-    const queueUrl = "https://sqs.us-east-2.amazonaws.com/873996336316/david-net1500-bigmover";
+    const queueUrl = "https://sqs.us-east-2.amazonaws.com/767397794649/FayazJani-net1500-queue";
     const params = {
       QueueUrl: queueUrl,
       MaxNumberOfMessages: 10, // Maximum number of messages to retrieve
@@ -37,7 +37,7 @@ export const handler = async (event) => {
     emailbody += "</ul>";
     const command = new SendEmailCommand({
       Destination: {
-        ToAddresses: ["dli@indianatech.edu"],
+        ToAddresses: ["fayazchotu@gmail.com"],
       },
       Message: {
         Body: {
@@ -45,7 +45,7 @@ export const handler = async (event) => {
         },
         Subject: { Data: "Top movers today" },
       },
-      Source: "dli@indianatech.edu",
+      Source: "fayazchotu@gmail.com",
     });
     let response = await ses.send(command);
 
