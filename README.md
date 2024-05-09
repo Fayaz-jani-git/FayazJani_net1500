@@ -24,6 +24,8 @@ RESTful APIs typically return data in lightweight formats like JSON or XML, maki
 
 I hope this introduction provides you with a comprehensive understanding of my knowledge and expertise in these key areas. I am excited about the opportunity to further discuss my qualifications and contribute to your organization's success.
 
+The **"Big Mover Serverless Web Application"** is designed to collect stock tickers opening significantly higher than the previous day, save them in Amazon DynamoDB, and send email notifications to users. It utilizes AWS Lambda for serverless computing, SES for email services, SQS for message queuing, and RESTful API architecture for communication. Lambda functions are triggered by configured events, SES is set up for email sending, SQS for queuing, and RESTful API ensures secure data exchange between systems. These services offer benefits like scalability, security, and reliability for efficient operation.
+
 Thank you for your consideration.
 
 Sincerely,
