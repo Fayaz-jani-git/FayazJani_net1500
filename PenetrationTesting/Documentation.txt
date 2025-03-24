@@ -1,0 +1,76 @@
+Kali Linux Setup for Penetration Testing with bWAPP
+
+1. Download and Install Kali Linux
+   - Grab the latest Kali Linux ISO from https://www.kali.org.
+   - Install Kali Linux on VMware Fusion if you're using a MacBook.
+   - Adjust your VM settings for better performance:
+     - Give it at least 4GB of RAM and 2 CPUs.
+     - Enable Bridged Networking so it connects properly.
+
+2. Update and Upgrade Kali Linux
+   Open the terminal and run:
+   ```
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+3. Install Required Tools
+   Run these commands to install the necessary tools:
+   ```
+   sudo apt install apache2 mysql-server php php-mysqli -y
+   sudo systemctl status apache2
+   sudo systemctl status mysql
+   ```
+
+4. Download and Set Up bWAPP
+   Move to the web root directory:
+   ```
+   cd /var/www/html
+   ```
+   Clone the bWAPP repository:
+   ```
+   sudo git clone https://github.com/ethicalhack3r/bWAPP.git
+   ```
+   Adjust permissions so everything runs smoothly:
+   ```
+   sudo chown -R www-data:www-data bWAPP
+   sudo chmod -R 755 bWAPP
+   ```
+
+5. Configure the MySQL Database
+   Start MySQL:
+   ```
+   sudo systemctl start mysql
+   ```
+   Log in as root:
+   ```
+   sudo mysql -u root -p
+   ```
+   Inside MySQL, create the database and import the bWAPP data:
+   ```
+   CREATE DATABASE bWAPP;
+   USE bWAPP;
+   SOURCE /var/www/html/bWAPP/database.sql;
+   exit;
+   ```
+
+6. Start Apache and Access bWAPP
+   Restart Apache:
+   ```
+   sudo systemctl restart apache2
+   ```
+   Now open your browser and go to:
+   ```
+   http://localhost/bWAPP/login.php
+   ```
+   Use these credentials to log in:
+   - Username: bee
+   - Password: bug
+
+7. Verify and Start Pentesting
+   Run an nmap scan to make sure everything is reachable:
+   ```
+   nmap -p 80 localhost
+   ```
+   From here, you can start testing with tools like Burp Suite, SQLmap, and Metasploit.
+
+That's it! Now you’re all set to begin your penetration testing with bWAPP.
